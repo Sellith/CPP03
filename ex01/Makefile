@@ -35,8 +35,8 @@ D_BUILD_DIR	:=	$(BUILD_DIR)/default_build
 DEBUG_DIR	:=	$(BUILD_DIR)/debug_build
 
 
-TARGET		:=	ClapTrap
-TARGETDEBUG	:=	Debug_ClapTrap
+TARGET		:=	SerenahMyLove
+TARGETDEBUG	:=	Debug_SerenahMyLove
 NAME		:=	$(BIN_DIR)/$(TARGET)
 NAMEDEBUG	:=	$(BIN_DIR)/$(TARGETDEBUG)
 
@@ -53,22 +53,22 @@ CLR_WTH		:=	\033[1;97m
 
 ERS_STR		:=	\033[2K\r
 
-SRCS		:=	main.cpp ClapTrap.cpp
+SRCS		:=	main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJS		:=	$(patsubst %.cpp, $(D_BUILD_DIR)/%.o, $(SRCS))
 OBJS_DEBUG	:=	$(patsubst %.cpp, $(DEBUG_DIR)/%.o, $(SRCS))
 
-all:	$(NAME)
+all:		$(NAME)
 
 clean:
 	@printf "$(CLR_YLW)\tCleaning objs\n\tRemoving build directory\n$(CLR_RESET)"
 	@rm -rf $(D_BUILD_DIR)
 
-fclean: clean
+fclean:	clean
 	@printf "$(CLR_YLW)\tRemoving $(CLR_RED)\"%s\"$(CLR_RESET)\n" $(NAME)
 	@rm $(NAME)
 
-re: fclean all
+re:			fclean all
 
 debug: $(NAMEDEBUG)
 
@@ -76,17 +76,17 @@ cleanbug:
 	@printf "$(CLR_YLW)\tCleaning objs\n\tRemoving debug build directory\n$(CLR_RESET)"
 	@rm -rf $(DEBUG_DIR)
 
-fcleanbug: cleanbug
+fcleanbug:	cleanbug
 	@printf "$(CLR_YLW)\tRemoving $(CLR_RED)\"%s\"$(CLR_RESET)\n" $(NAMEDEBUG)
 	@rm $(NAMEDEBUG)
 
-rebug: fcleanbug debug
+rebug:		fcleanbug debug
 
-makeall: all debug
+makeall:	all debug
 
-cleanall: clean cleanbug
+cleanall:	clean cleanbug
 
-fcleanall: fclean fcleanbug
+fcleanall:	fclean fcleanbug
 
 $(NAME):	$(OBJS)
 	@mkdir -p $(BIN_DIR)

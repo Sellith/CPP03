@@ -23,26 +23,27 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
+
 #include "ClapTrap.hpp"
 
 
-/* Orthodox Canonical Form */
+/* ===================== Orthodox Canonical Form ====================== */
 
 
 ClapTrap::ClapTrap( void ) : 
 	_name("Random"), 
-	_hitPoints(10),
-	_energyPoints(10), 
-	_attackDamage(0) {
+	_hitPoints(100),
+	_energyPoints(50), 
+	_attackDamage(20) {
 	std::cout << "ClapTrap \"" << _name << "\" is created" << std::endl;
 }
 
 
 ClapTrap::ClapTrap( std::string name ) : 
 	_name(name), 
-	_hitPoints(10),
-	_energyPoints(10),
-	_attackDamage(0) {
+	_hitPoints(100),
+	_energyPoints(50),
+	_attackDamage(20) {
 	std::cout << "custom ClapTrap \"" << _name << "\" is created" << std::endl;
 }
 
@@ -52,7 +53,7 @@ ClapTrap::ClapTrap( ClapTrap const & src ) :
 	_hitPoints(src._hitPoints),
 	_energyPoints(src._energyPoints),
 		_attackDamage(src._attackDamage) {
-	std::cout << "ClapTrap \"" << _name << "\" has successfully been cloned" << std::endl;
+	std::cout << "ClapTrap \"" << _name << "\" has been cloned" << std::endl;
 }
 
 
@@ -71,15 +72,15 @@ ClapTrap& ClapTrap::operator=( ClapTrap const & src ) {
 
 
 ClapTrap::~ClapTrap( void ) {
-	std::cout << "ClapTrap \"" << _name << "\" chose to self destruct"  << std::endl;
+	std::cout << "ClapTrap " << _name << " is done" << std::endl;
 }
 
 
-/* needed functions */
+/* =========================== needed functions ============================ */
 
 
 void ClapTrap::attack( const std::string& target ) {
-	std::cout << "[ hp:" << _hitPoints << "\tep:" << _energyPoints << " ]\t";
+	std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0) {
 		std::cout << RED << "ClapTrap " << _name 
 				<< " can't attack because he has no hit point left" 
@@ -98,7 +99,7 @@ void ClapTrap::attack( const std::string& target ) {
 
 
 void    ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << "[ hp:" << _hitPoints << "\tep:" << _energyPoints << " ]\t";
+	std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0) 
 		std::cout << RED << "ClapTrap " << _name 
 				<< "'s hp is already 0, please stop beating it" 
@@ -119,24 +120,24 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	std::cout << "[ hp:" << _hitPoints << "\tep:" << _energyPoints << " ]\t";
+	std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0)
 		std::cout << RED << "ClapTrap " << _name << " is dead and cannot repair itself"
 				<< RESET << std::endl;
-	else if (_energyPoints > 0 && _hitPoints < 10 && amount + _hitPoints < 10) {
+	else if (_energyPoints > 0 && _hitPoints < HP_MAX && amount + _hitPoints < HP_MAX) {
 		_energyPoints--;
 		_hitPoints += amount;
 		std::cout << CYAN << "ClapTrap " << _name << " repaired itself by " 
 				<< amount << " hit points" << RESET << std::endl;
 	}
-	else if (_energyPoints > 0 && _hitPoints < 10 && amount + _hitPoints >= 10) {
+	else if (_energyPoints > 0 && _hitPoints < HP_MAX && amount + _hitPoints >= HP_MAX) {
 		_energyPoints--;
 		std::cout << CYAN << "ClapTrap " << _name << " repaired itself by " 
-				<< 10 - _hitPoints << " hit points and has reach full hp"
+				<< HP_MAX - _hitPoints << " hit points and has reach full hp"
 				<< RESET << std::endl;
-		_hitPoints = 10;
+		_hitPoints = HP_MAX;
 	}
-	else if (_energyPoints > 0 && _hitPoints == 10)
+	else if (_energyPoints > 0 && _hitPoints == HP_MAX)
 		std::cout << CYAN << "ClapTrap " << _name 
 				<< " is already at full hp and don't need repair" 
 				<< RESET << std::endl;
@@ -144,4 +145,48 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << YELLOW << "ClapTrap " << _name 
 				<< " has no energy left to repair itself" 
 				<< RESET << std::endl;
+}
+
+
+/* =========================== getter functions ============================ */
+
+
+std::string	ClapTrap::getName() {
+	return (_name);
+}
+
+unsigned int	ClapTrap::getAttack() {
+	return (_attackDamage);
+}
+
+unsigned int	ClapTrap::getHitPoints() {
+	return (_hitPoints);
+}
+
+unsigned int	ClapTrap::getEnergy() {
+	return (_energyPoints);
+}
+
+
+/* =========================== setter functions ============================ */
+
+
+void	ClapTrap::setName( std::string newName ) {
+	_name = newName;
+	return ;
+}
+
+void	ClapTrap::setAttack( unsigned int newAp ) {
+	_attackDamage = newAp;
+	return ;
+}
+
+void	ClapTrap::setHitPoints( unsigned int newHp ) {
+	_hitPoints = newHp;
+	return ;
+}
+
+void	ClapTrap::setEnergy( unsigned int newEp ) {
+	_energyPoints = newEp;
+	return ;
 }

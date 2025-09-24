@@ -8,7 +8,7 @@
 /*                                                                             :kxdddddl                 .ox,      */
 /*                                                                       ..,cdkOOkkkxdddd'      ;o.     ckkd,      */
 /*                                                               .,:coxOOOkkkkkkkxxxxxddddo:...lxdl.   ckkxd.      */
-/*   ClapTrap.hpp                                            ;oxOOOOkkxxkxxxxxxxxxxdddddodddxxxkkxxxdlckkxdd.      */
+/*   main.cpp                                                ;oxOOOOkkxxkxxxxxxxxxxdddddodddxxxkkxxxdlckkxdd.      */
 /*                                                        ,oOOOkkkkxxxdddxdddddddddddddoooooodooddddooooddooc      */
 /*   By: lvan-bre <lvan-bre@student.42lehavre.fr>       ;kkkkkxxxxxddoooooooooooooooooooooooooollooooooololll      */
 /*                                                     oxodddddoooooolllllllolooooollloooollllolllllloooolccl;     */
@@ -23,45 +23,45 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef CLAPTRAP_H
-# define CLAPTRAP_H
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-# include <iostream>
-# include <string>
+int main( void ) {
+	{
+		ClapTrap a("AHHA");
+		ScavTrap b("HAAH");
+		
+		a.attack(b.getName());
+		b.takeDamage(a.getAttack());
+		b.guardGate();
+		a.attack(b.getName());
+		b.takeDamage(a.getAttack());
+		b.takeDamage(a.getAttack());
+		b.takeDamage(a.getAttack());
+		b.attack(a.getName());
+		a.beRepaired(a.getAttack());
+		b.attack(a.getName());
+		a.takeDamage(b.getAttack());
+		a.attack(b.getName());
+		b.takeDamage(a.getAttack());
+		b.takeDamage(a.getAttack());
+		b.attack(a.getName());
+	}
+	std::cout << "\n\n";
+	{
+		ClapTrap	Marcius("Marcius");
+		ScavTrap	lucius("lucius");
+		ScavTrap	lucius2(lucius);
 
-# define RED	"\033[1;91m"
-# define GREEN	"\033[1;92m"
-# define YELLOW	"\033[1;93m"
-# define PURPLE	"\033[1;95m"
-# define CYAN	"\033[1;96m"
-# define RESET	"\033[0m"
-
-# ifndef DEBUG
-#  define DEBUG false
-# endif
-
-class ClapTrap {
-
-public:
-
-	ClapTrap	( void );
-	ClapTrap	( std::string name );
-	ClapTrap	( ClapTrap const & cp );
-	~ClapTrap	( void );
-
-	ClapTrap & operator= ( ClapTrap const & src );
-
-	void    attack (const std::string& target );
-	void    takeDamage (unsigned int amount );
-	void	beRepaired (unsigned int amount );
-
-private:
-
-	std::string		_name;
-	unsigned int	_hitPoints;
-	unsigned int	_energyPoints;
-	unsigned int	_attackDamage;
-
-} ;
-
-#endif
+		Marcius.beRepaired(Marcius.getAttack());
+		while (Marcius.getHitPoints() >= 0 && Marcius.getEnergy() > 0) {
+			Marcius.attack(lucius.getName());
+			Marcius.attack(lucius.getName());
+			lucius.takeDamage(Marcius.getAttack());
+			lucius.takeDamage(Marcius.getAttack());
+			lucius2.attack(Marcius.getName());
+			lucius.beRepaired(lucius.getAttack());
+		}
+		Marcius.attack(lucius2.getName());
+	}
+}

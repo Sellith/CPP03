@@ -29,12 +29,15 @@
 # include <iostream>
 # include <string>
 
-# define RED	"\033[1;91m"
-# define GREEN	"\033[1;92m"
-# define YELLOW	"\033[1;93m"
-# define PURPLE	"\033[1;95m"
-# define CYAN	"\033[1;96m"
-# define RESET	"\033[0m"
+# define RED	"\e[1;91m"
+# define GREEN	"\e[1;92m"
+# define YELLOW	"\e[1;93m"
+# define PURPLE	"\e[1;95m"
+# define CYAN	"\e[1;96m"
+# define WHITE	"\e[1;97m"
+# define RESET	"\e[0m"
+
+# define HP_MAX	100
 
 # ifndef DEBUG
 #  define DEBUG false
@@ -44,16 +47,41 @@ class ClapTrap {
 
 public:
 
+	/* =============== Constructor ============== */
+
 	ClapTrap	( void );
 	ClapTrap	( std::string name );
 	ClapTrap	( ClapTrap const & cp );
+
+	/* ================ Destrutor =============== */
+
 	~ClapTrap	( void );
+
+	/* ================= Operator =============== */
 
 	ClapTrap & operator= ( ClapTrap const & src );
 
-	void    attack (const std::string& target );
-	void    takeDamage (unsigned int amount );
-	void	beRepaired (unsigned int amount );
+	/* ================= ClapTrap =============== */
+
+	void    			attack ( const std::string& target );
+	void    			takeDamage ( unsigned int amount );
+	void				beRepaired ( unsigned int amount );
+
+	/* ================== Getter ================ */
+
+	unsigned int		getHitPoints ( void );
+	unsigned int		getEnergy ( void );
+	unsigned int		getAttack ( void );
+	std::string			getName ( void );
+
+
+	/* ================== Getter ================ */
+
+	void				setHitPoints ( unsigned int newHp );
+	void				setEnergy ( unsigned int newEp );
+	void				setAttack ( unsigned int newAp );
+	void				setName ( std::string newName );
+
 
 private:
 

@@ -1,6 +1,5 @@
 /* *************************************************************************************************************** */
-/*   ScavTrap.hpp                                                                                                  */
-/*   By: lvan-bre                                                                   .,                             */
+/*                                                                                  .,                             */
 /*                                                                                 okxl                            */
 /*                                                                                xkddo                            */
 /*                                                                               kkxddo                            */
@@ -9,9 +8,9 @@
 /*                                                                             :kxdddddl                 .ox,      */
 /*                                                                       ..,cdkOOkkkxdddd'      ;o.     ckkd,      */
 /*                                                               .,:coxOOOkkkkkkkxxxxxddddo:...lxdl.   ckkxd.      */
-/*                                                           ;oxOOOOkkxxkxxxxxxxxxxdddddodddxxxkkxxxdlckkxdd.      */
+/*   main.cpp                                                ;oxOOOOkkxxkxxxxxxxxxxdddddodddxxxkkxxxdlckkxdd.      */
 /*                                                        ,oOOOkkkkxxxdddxdddddddddddddoooooodooddddooooddooc      */
-/*                                                      ;kkkkkxxxxxddoooooooooooooooooooooooooollooooooololll      */
+/*   By: lvan-bre <lvan-bre@student.42lehavre.fr>       ;kkkkkxxxxxddoooooooooooooooooooooooooollooooooololll      */
 /*                                                     oxodddddoooooolllllllolooooollloooollllolllllloooolccl;     */
 /*                                                    'x:::cclccllllccccccccccclllclllllllllllllllll     .;;cl;    */
 /*                                                    d;c::cc:cc:::;::c:c:cccccclccc:cccclllllll,         .:cl.    */
@@ -24,35 +23,23 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef SCAVTRAP_H
-# define SCAVTRAP_H
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-# include <iostream>
+int main( void ) {
 
-# include "ClapTrap.hpp"
+	FragTrap	a;
+	FragTrap	john("john");
+	FragTrap	cp(john);
 
+	a.highFivesGuys();
+	john.highFivesGuys();
+	cp.highFivesGuys();
 
-class ScavTrap : public ClapTrap {
-
-public:
-
-/* ================= Constructor ================ */
-
-	ScavTrap ( void );
-	ScavTrap ( std::string name );
-	ScavTrap ( ScavTrap const & cp );
-	~ScavTrap ( void );
-
-/* =================== ScavTrap ================== */
-
-	void	attack ( const std::string& target );
-	void	guardGate ( void );
-
-private:
-
-	bool	_gateKeeperMode;
-
-} ;
-
-#endif
-
+	a.attack(john.getName());
+	john.takeDamage(a.getAttack());
+	cp.attack(john.getName());
+	john.takeDamage(cp.getAttack());
+	
+}

@@ -28,11 +28,14 @@
 
 int main( void ) {
 	{
-		ClapTrap a("AHHA");
+		ClapTrap dummy("dum");
+		ScavTrap a;
 		ScavTrap b("HAAH");
 		
 		a.attack(b.getName());
 		b.takeDamage(a.getAttack());
+		a.attack(dummy.getName());
+		dummy.takeDamage(a.getAttack());
 		b.guardGate();
 		a.attack(b.getName());
 		b.takeDamage(a.getAttack());
@@ -49,7 +52,7 @@ int main( void ) {
 	}
 	std::cout << "\n\n";
 	{
-		ClapTrap	Marcius("Marcius");
+		ScavTrap	Marcius("Marcius");
 		ScavTrap	lucius("lucius");
 		ScavTrap	lucius2(lucius);
 

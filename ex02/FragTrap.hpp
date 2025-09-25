@@ -1,5 +1,5 @@
 /* *************************************************************************************************************** */
-/*   ScavTrap.hpp                                                                                                  */
+/*   FragTrap.hpp                                                                                                  */
 /*   By: lvan-bre                                                                   .,                             */
 /*                                                                                 okxl                            */
 /*                                                                                xkddo                            */
@@ -24,35 +24,26 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef SCAVTRAP_H
-# define SCAVTRAP_H
-
-# include <iostream>
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include "ClapTrap.hpp"
 
-
-class ScavTrap : public ClapTrap {
+class FragTrap : public ClapTrap {
 
 public:
 
-/* ================= Constructor ================ */
+	FragTrap ( void );
+	FragTrap ( std::string name );
+	FragTrap ( FragTrap const & cp );
+	~FragTrap ( void );
 
-	ScavTrap ( void );
-	ScavTrap ( std::string name );
-	ScavTrap ( ScavTrap const & cp );
-	~ScavTrap ( void );
-
-/* =================== ScavTrap ================== */
-
-	void	attack ( const std::string& target );
-	void	guardGate ( void );
+	void	highFivesGuys ( void );
 
 private:
 
-	bool	_gateKeeperMode;
+	bool _requested_high_five;
 
-} ;
+};
 
 #endif
-

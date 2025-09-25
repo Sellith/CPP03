@@ -1,5 +1,5 @@
 /* *************************************************************************************************************** */
-/*   ScavTrap.hpp                                                                                                  */
+/*   FragTrap.cpp                                                                                                  */
 /*   By: lvan-bre                                                                   .,                             */
 /*                                                                                 okxl                            */
 /*                                                                                xkddo                            */
@@ -24,35 +24,60 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef SCAVTRAP_H
-# define SCAVTRAP_H
+#include "FragTrap.hpp"
 
-# include <iostream>
+#define READY		"is happy to attack"
+#define CLONED		"has been cloned and is ready to attack"
+#define FINISH		"has successfully destroyed the target"
+#define COOL		"request to do a high five"
 
-# include "ClapTrap.hpp"
+
+#define SCAV_PREFIX(color, name)	color << "FragTrap \"" << name << "\" "
+#define STATUS(hp, energy)			"[ hp:" << hp << " ep:" << energy << " ] "
+
+/* ===================== Orthodox Canonical Form ====================== */
 
 
-class ScavTrap : public ClapTrap {
+FragTrap::FragTrap( void ) : 
+	ClapTrap(),
+	_requested_high_five( false ) {
+	_hitPoints = HP_MAX;
+	_energyPoints = 100;
+	_attackDamage = 30;
+	std::cout << SCAV_PREFIX(WHITE, _name) << READY << RESET << std::endl;
+}
 
-public:
 
-/* ================= Constructor ================ */
+FragTrap::FragTrap( std::string name ) : 
+	ClapTrap( name ),
+	_requested_high_five(false) {
+	_hitPoints = HP_MAX;
+	_energyPoints = 100;
+	_attackDamage = 30;
+	std::cout << "\e[1;97mCustom " << SCAV_PREFIX(WHITE, _name) << READY << RESET << std::endl;
+}
 
-	ScavTrap ( void );
-	ScavTrap ( std::string name );
-	ScavTrap ( ScavTrap const & cp );
-	~ScavTrap ( void );
 
-/* =================== ScavTrap ================== */
+FragTrap::FragTrap( FragTrap const & src ) : 
+	ClapTrap( src ),
+	_requested_high_five(src._requested_high_five) {
+	std::cout << SCAV_PREFIX(WHITE, _name) << CLONED << RESET << std::endl;
+}
 
-	void	attack ( const std::string& target );
-	void	guardGate ( void );
 
-private:
+FragTrap::~FragTrap( void ) {
+	std::cout << SCAV_PREFIX(WHITE, _name) << FINISH << RESET << std::endl;
+}
 
-	bool	_gateKeeperMode;
 
-} ;
+/* =========================== needed functions ============================ */
 
-#endif
+
+void	FragTrap::highFivesGuys( void ) {
+
+	std::cout << STATUS(getHitPoints(), getEnergy());
+
+	std::cout << SCAV_PREFIX(PURPLE, _name) << COOL << RESET << std::endl;
+	_requested_high_five = true;
+}
 

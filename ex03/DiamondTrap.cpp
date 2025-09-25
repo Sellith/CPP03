@@ -36,17 +36,17 @@
 
 DiamondTrap::DiamondTrap( void ): ClapTrap( "Random_clap_name" ) {
 	_name = "Random";
-	_hitPoints = FragTrap::_hitPoints;
-	_attackDamage = FragTrap::_attackDamage;
-	_energyPoints = ScavTrap::_energyPoints;
+	_hitPoints = HP_MAX;
+	_energyPoints = 50;
+	_attackDamage = 30;
 	std::cout << DT_PREFIX(WHITE, _name) << READY << RESET << std::endl;
 }
 
 DiamondTrap::DiamondTrap( std::string name ): ClapTrap( name + "_clap_name" ) {
 	_name = name;
-	_hitPoints = FragTrap::_hitPoints;
-	_attackDamage = FragTrap::_attackDamage;
-	_energyPoints = ScavTrap::_energyPoints;
+	_hitPoints = HP_MAX;
+	_energyPoints = 50;
+	_attackDamage = 30;
 	std::cout << "\e[1;97mCustom " << DT_PREFIX(WHITE, _name) << READY << RESET << std::endl;
 }
 

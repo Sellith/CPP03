@@ -91,12 +91,12 @@ fcleanall:	fclean fcleanbug
 $(NAME):	$(OBJS)
 	@mkdir -p $(BIN_DIR)
 	@$(CC) $(CFLAGS) $(OBJS) -o $@
-	@printf "$(ERS_STR)$(CLR_BLUE)\tDone Building:\t$(CLR_LPPL)\"%s\"$(CLR_GRN) in $(CLR_LPPL)\"%s/\"$(CLR_GRN)!$(CLR_RESET)\n" $(TARGET) $(BIN_DIR)
+	@printf "$(ERS_STR)$(CLR_BLUE)\tDone Building:\t$(CLR_PPL)\"%s\"$(CLR_GRN) in $(CLR_PPL)\"%s/\"$(CLR_GRN)!$(CLR_RESET)\n" $(TARGET) $(BIN_DIR)
 
 $(NAMEDEBUG):	$(OBJS_DEBUG)
 	@mkdir -p $(BIN_DIR)
 	@$(CC) $(CFLAGS) $(OBJS_DEBUG) -o $@ -DDEBUG=true
-	@printf "$(ERS_STR)$(CLR_BLUE)\tDone Building:\t$(CLR_LPPL)\"%s\"$(CLR_GRN) in $(CLR_LPPL)\"%s/\"$(CLR_GRN)!$(CLR_RESET)\n" $(TARGETDEBUG) $(BIN_DIR)
+	@printf "$(ERS_STR)$(CLR_BLUE)\tDone Building:\t$(CLR_PPL)\"%s\"$(CLR_GRN) in $(CLR_PPL)\"%s/\"$(CLR_GRN)!$(CLR_RESET)\n" $(TARGETDEBUG) $(BIN_DIR)
 
 $(D_BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(D_BUILD_DIR)

@@ -36,7 +36,7 @@ int main( void ) {
 	b.whoami();
 	c.whoami();
 
-	std::cout << "hp is " << a.getHitPoints() << " ep is " << a.getEnergy() << " ap is " << a.getAttack() << std::endl;
+	std::cout << "hp is " << c.getHitPoints() << " ep is " << c.getEnergy() << " ap is " << c.getAttack() << std::endl;
 
 	a.attack(b.getName());
 	b.takeDamage(a.getAttack());

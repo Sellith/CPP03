@@ -57,7 +57,7 @@ int main( void ) {
 		ScavTrap	lucius2(lucius);
 
 		Marcius.beRepaired(Marcius.getAttack());
-		while (Marcius.getHitPoints() >= 0 && Marcius.getEnergy() > 0) {
+		while (Marcius.getHitPoints() >	0 && Marcius.getEnergy() > 0) {
 			Marcius.attack(lucius.getName());
 			Marcius.attack(lucius.getName());
 			lucius.takeDamage(Marcius.getAttack());

@@ -50,7 +50,7 @@ DiamondTrap::DiamondTrap( std::string name ): ClapTrap( name + "_clap_name" ) {
 	std::cout << "\e[1;97mCustom " << DT_PREFIX(WHITE, _name) << READY << RESET << std::endl;
 }
 
-DiamondTrap::DiamondTrap( const DiamondTrap & src ): ClapTrap( src ) {
+DiamondTrap::DiamondTrap( const DiamondTrap & src ): ClapTrap( src ), ScavTrap( src ), FragTrap( src ) {
 	_name = src._name;
 	std::cout << DT_PREFIX(WHITE, _name) << CLONED << RESET << std::endl;
 }

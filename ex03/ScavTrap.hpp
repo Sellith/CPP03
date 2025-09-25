@@ -1,5 +1,5 @@
 /* *************************************************************************************************************** */
-/*   FragTrap.hpp                                                                                                  */
+/*   ScavTrap.hpp                                                                                                  */
 /*   By: lvan-bre                                                                   .,                             */
 /*                                                                                 okxl                            */
 /*                                                                                xkddo                            */
@@ -24,22 +24,31 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef SCAVTRAP_H
+# define SCAVTRAP_H
+
+# include <iostream>
 
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+
+class ScavTrap : virtual public ClapTrap {
 
 public:
 
-	FragTrap ( void );
-	FragTrap ( std::string name );
-	FragTrap ( FragTrap const & cp );
-	~FragTrap ( void );
+/* ================= Constructor ================ */
 
-	void	highFivesGuys ( void );
+	ScavTrap ( void );
+	ScavTrap ( std::string name );
+	ScavTrap ( ScavTrap const & cp );
+	~ScavTrap ( void );
 
-};
+/* =================== ScavTrap ================== */
+
+	void	attack ( const std::string & target );
+	void	guardGate ( void );
+
+} ;
 
 #endif
+

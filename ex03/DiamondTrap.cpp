@@ -1,5 +1,5 @@
 /* *************************************************************************************************************** */
-/*   FragTrap.hpp                                                                                                  */
+/*   DiamondTrap.cpp                                                                                                  */
 /*   By: lvan-bre                                                                   .,                             */
 /*                                                                                 okxl                            */
 /*                                                                                xkddo                            */
@@ -24,22 +24,49 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#include "DiamondTrap.hpp"
 
-# include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+#define READY		"is ready to kick asses"
+#define CLONED		"has been cloned and is ready to kick asses"
+#define FINISH		"has successfully KOed the target"
 
-public:
+#define DT_PREFIX(color, name)		color << "DiamondTrap \"" << name << "\" "
 
-	FragTrap ( void );
-	FragTrap ( std::string name );
-	FragTrap ( FragTrap const & cp );
-	~FragTrap ( void );
 
-	void	highFivesGuys ( void );
+DiamondTrap::DiamondTrap( void ): ClapTrap( "Random_clap_name" ) {
+	_name = "Random";
+	_hitPoints = FragTrap::_hitPoints;
+	_attackDamage = FragTrap::_attackDamage;
+	_energyPoints = ScavTrap::_energyPoints;
+	std::cout << DT_PREFIX(WHITE, _name) << READY << RESET << std::endl;
+}
 
-};
+DiamondTrap::DiamondTrap( std::string name ): ClapTrap( name + "_clap_name" ) {
+	_name = name;
+	_hitPoints = FragTrap::_hitPoints;
+	_attackDamage = FragTrap::_attackDamage;
+	_energyPoints = ScavTrap::_energyPoints;
+	std::cout << "\e[1;97mCustom " << DT_PREFIX(WHITE, _name) << READY << RESET << std::endl;
+}
 
-#endif
+DiamondTrap::DiamondTrap( const DiamondTrap & src ): ClapTrap( src ) {
+	_name = src._name;
+	std::cout << DT_PREFIX(WHITE, _name) << CLONED << RESET << std::endl;
+}
+
+DiamondTrap::~DiamondTrap( void ) {
+	std::cout << DT_PREFIX(WHITE, _name) << FINISH << RESET << std::endl;
+}
+
+
+void	DiamondTrap::attack( const std::string & target ) {
+	ScavTrap::attack( target );
+}
+
+
+void	DiamondTrap::whoami( void ) {
+
+	std::cout << CYAN << "my Diamond name is " << _name << " and my ClapTrap name is " 
+		<< ClapTrap::_name << RESET << std::endl;
+}

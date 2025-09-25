@@ -1,5 +1,5 @@
 /* *************************************************************************************************************** */
-/*   FragTrap.hpp                                                                                                  */
+/*   ScavTrap.cpp                                                                                                  */
 /*   By: lvan-bre                                                                   .,                             */
 /*                                                                                 okxl                            */
 /*                                                                                xkddo                            */
@@ -24,22 +24,79 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#include "ScavTrap.hpp"
 
-# include "ClapTrap.hpp"
+#define READY		"is ready to defend"
+#define CLONED		"has been cloned and is ready to defend"
+#define FINISH		"has successfully defended the target"
+#define GATE		"activated gate keeper mode"
+#define	NODEF		"can't defend because he has no hit point left" 
+#define COUNTER		"counter-attacks from "
+#define	NOEDEF		"has no energy left to defend"
 
-class FragTrap : public ClapTrap {
 
-public:
+#define SCAV_PREFIX(color, name)	color << "ScavTrap \"" << name << "\" "
+#define STATUS(hp, energy)			"[ hp:" << hp << " ep:" << energy << " ] "
 
-	FragTrap ( void );
-	FragTrap ( std::string name );
-	FragTrap ( FragTrap const & cp );
-	~FragTrap ( void );
+/* ===================== Orthodox Canonical Form ====================== */
 
-	void	highFivesGuys ( void );
 
-};
+ScavTrap::ScavTrap( void ) : 
+	ClapTrap() {
+	_hitPoints = HP_MAX;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	std::cout << SCAV_PREFIX(WHITE, getName()) << READY << RESET << std::endl;
+}
 
-#endif
+
+ScavTrap::ScavTrap( std::string name ) : 
+	ClapTrap( name ) {
+	_hitPoints = HP_MAX;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	std::cout << "\e[1;97mCustom " << SCAV_PREFIX(WHITE, getName()) << READY << RESET << std::endl;
+}
+
+
+ScavTrap::ScavTrap( ScavTrap const & src ) : 
+	ClapTrap( src ) {
+	std::cout << SCAV_PREFIX(WHITE, _name) << CLONED << RESET << std::endl;
+}
+
+
+ScavTrap::~ScavTrap( void ) {
+	std::cout << SCAV_PREFIX(WHITE, _name) << FINISH << RESET << std::endl;
+}
+
+
+/* =========================== needed functions ============================ */
+
+
+void	ScavTrap::guardGate( void ) {
+
+	std::cout << STATUS(getHitPoints(), getEnergy());
+
+	std::cout << SCAV_PREFIX(PURPLE, _name) << GATE << RESET << std::endl;
+}
+
+
+void    ScavTrap::attack( const std::string & target ) {
+
+	std::cout << STATUS(getHitPoints(), getEnergy());
+
+	if (getHitPoints() == 0) {
+		std::cout << SCAV_PREFIX(RED, _name) 
+				<< NODEF << RESET << std::endl;
+	}
+
+	else if (getEnergy() > 0) {
+		setEnergy(getEnergy() - 1);
+		std::cout << SCAV_PREFIX(PURPLE, _name) 
+				<< COUNTER << target << RESET << std::endl;
+	}
+
+	else
+		std::cout << SCAV_PREFIX(YELLOW, _name) 
+				<< NOEDEF << RESET << std::endl;
+}

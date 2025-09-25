@@ -1,5 +1,5 @@
 /* *************************************************************************************************************** */
-/*   FragTrap.hpp                                                                                                  */
+/*   DiamondTrap.hpp                                                                                                  */
 /*   By: lvan-bre                                                                   .,                             */
 /*                                                                                 okxl                            */
 /*                                                                                xkddo                            */
@@ -24,21 +24,27 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-# include "ClapTrap.hpp"
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 
 public:
 
-	FragTrap ( void );
-	FragTrap ( std::string name );
-	FragTrap ( FragTrap const & cp );
-	~FragTrap ( void );
+	DiamondTrap ( void );
+	DiamondTrap ( std::string name );
+	DiamondTrap ( DiamondTrap const & src );
+	~DiamondTrap ( void );
 
-	void	highFivesGuys ( void );
+	void	whoami ( void );
+	void	attack ( const std::string & target );
+
+private:
+
+	std::string	_name;
 
 };
 

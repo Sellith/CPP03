@@ -79,7 +79,7 @@ ClapTrap::~ClapTrap( void ) {
 
 
 void ClapTrap::attack( const std::string& target ) {
-	std::cout << "[ hp:" << _hitPoints << "\tep:" << _energyPoints << " ]\t";
+	std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0) {
 		std::cout << RED << "ClapTrap " << _name 
 				<< " can't attack because he has no hit point left" 
@@ -98,7 +98,7 @@ void ClapTrap::attack( const std::string& target ) {
 
 
 void    ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << "[ hp:" << _hitPoints << "\tep:" << _energyPoints << " ]\t";
+	std::cout << "[ hp:" << _hitPoints - amount << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0) 
 		std::cout << RED << "ClapTrap " << _name 
 				<< "'s hp is already 0, please stop beating it" 
@@ -119,7 +119,7 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	std::cout << "[ hp:" << _hitPoints << "\tep:" << _energyPoints << " ]\t";
+	std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0)
 		std::cout << RED << "ClapTrap " << _name << " is dead and cannot repair itself"
 				<< RESET << std::endl;

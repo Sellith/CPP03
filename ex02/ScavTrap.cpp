@@ -42,8 +42,7 @@
 
 
 ScavTrap::ScavTrap( void ) : 
-	ClapTrap(),
-	_gateKeeperMode( false ) {
+	ClapTrap() {
 	_hitPoints = HP_MAX;
 	_energyPoints = 50;
 	_attackDamage = 20;
@@ -52,8 +51,7 @@ ScavTrap::ScavTrap( void ) :
 
 
 ScavTrap::ScavTrap( std::string name ) : 
-	ClapTrap( name ),
-	_gateKeeperMode( false ) {
+	ClapTrap( name ) {
 	_hitPoints = HP_MAX;
 	_energyPoints = 50;
 	_attackDamage = 20;
@@ -62,8 +60,7 @@ ScavTrap::ScavTrap( std::string name ) :
 
 
 ScavTrap::ScavTrap( ScavTrap const & src ) : 
-	ClapTrap( src ),
-	_gateKeeperMode(src._gateKeeperMode) {
+	ClapTrap( src ) {
 	std::cout << SCAV_PREFIX(WHITE, _name) << CLONED << RESET << std::endl;
 }
 
@@ -81,7 +78,6 @@ void	ScavTrap::guardGate( void ) {
 	std::cout << STATUS(getHitPoints(), getEnergy());
 
 	std::cout << SCAV_PREFIX(PURPLE, _name) << GATE << RESET << std::endl;
-	_gateKeeperMode = true;
 }
 
 

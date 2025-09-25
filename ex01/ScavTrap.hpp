@@ -45,12 +45,8 @@ public:
 
 /* =================== ScavTrap ================== */
 
-	void	attack ( const std::string& target );
+	void	attack ( const std::string & target );
 	void	guardGate ( void );
-
-private:
-
-	bool	_gateKeeperMode;
 
 } ;
 

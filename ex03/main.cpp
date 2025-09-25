@@ -1,6 +1,5 @@
 /* *************************************************************************************************************** */
-/*   FragTrap.hpp                                                                                                  */
-/*   By: lvan-bre                                                                   .,                             */
+/*                                                                                  .,                             */
 /*                                                                                 okxl                            */
 /*                                                                                xkddo                            */
 /*                                                                               kkxddo                            */
@@ -9,9 +8,9 @@
 /*                                                                             :kxdddddl                 .ox,      */
 /*                                                                       ..,cdkOOkkkxdddd'      ;o.     ckkd,      */
 /*                                                               .,:coxOOOkkkkkkkxxxxxddddo:...lxdl.   ckkxd.      */
-/*                                                           ;oxOOOOkkxxkxxxxxxxxxxdddddodddxxxkkxxxdlckkxdd.      */
+/*   main.cpp                                                ;oxOOOOkkxxkxxxxxxxxxxdddddodddxxxkkxxxdlckkxdd.      */
 /*                                                        ,oOOOkkkkxxxdddxdddddddddddddoooooodooddddooooddooc      */
-/*                                                      ;kkkkkxxxxxddoooooooooooooooooooooooooollooooooololll      */
+/*   By: lvan-bre <lvan-bre@student.42lehavre.fr>       ;kkkkkxxxxxddoooooooooooooooooooooooooollooooooololll      */
 /*                                                     oxodddddoooooolllllllolooooollloooollllolllllloooolccl;     */
 /*                                                    'x:::cclccllllccccccccccclllclllllllllllllllll     .;;cl;    */
 /*                                                    d;c::cc:cc:::;::c:c:cccccclccc:cccclllllll,         .:cl.    */
@@ -24,22 +23,20 @@
 /*                                                                                                                 */
 /* *************************************************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#include "DiamondTrap.hpp"
 
-# include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+int main( void ) {
 
-public:
+	DiamondTrap a;
+	DiamondTrap b("Romie");
+	DiamondTrap c(b);
+	
+	a.whoami();
+	b.whoami();
+	c.whoami();
 
-	FragTrap ( void );
-	FragTrap ( std::string name );
-	FragTrap ( FragTrap const & cp );
-	~FragTrap ( void );
+	a.attack(b.getName());
+	b.takeDamage(a.getAttack());
 
-	void	highFivesGuys ( void );
-
-};
-
-#endif
+}

@@ -31,7 +31,7 @@
 
 
 ClapTrap::ClapTrap( void ) : 
-	_name( "Random" ), 
+	_name("Random"), 
 	_hitPoints(10),
 	_energyPoints(10), 
 	_attackDamage(0) {
@@ -40,7 +40,7 @@ ClapTrap::ClapTrap( void ) :
 
 
 ClapTrap::ClapTrap( std::string name ) : 
-	_name( name ), 
+	_name(name), 
 	_hitPoints(10),
 	_energyPoints(10),
 	_attackDamage(0) {
@@ -99,7 +99,7 @@ void ClapTrap::attack( const std::string& target ) {
 
 
 void    ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
+	std::cout << "[ hp:" << _hitPoints - amount << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0) 
 		std::cout << RED << "ClapTrap " << _name 
 				<< "'s hp is already 0, please stop beating it" 

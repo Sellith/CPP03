@@ -26,25 +26,26 @@
 
 #include "ClapTrap.hpp"
 
+#define CT_PREFIX(color, name)		color << "ClapTrap \"" << name << "\" "
 
 /* ===================== Orthodox Canonical Form ====================== */
 
 
 ClapTrap::ClapTrap( void ) : 
-	_name("Random"), 
+	_name( "Random" ), 
 	_hitPoints(10),
 	_energyPoints(10), 
 	_attackDamage(0) {
-	std::cout << "ClapTrap \"" << _name << "\" is created" << std::endl;
+	std::cout << CT_PREFIX(WHITE, _name) << "is created" << RESET << std::endl;
 }
 
 
 ClapTrap::ClapTrap( std::string name ) : 
-	_name(name), 
+	_name( name ), 
 	_hitPoints(10),
 	_energyPoints(10),
 	_attackDamage(0) {
-	std::cout << "custom ClapTrap \"" << _name << "\" is created" << std::endl;
+	std::cout << "\e[1;97mCustom " << CT_PREFIX(WHITE, _name) << "is created" << RESET << std::endl;
 }
 
 
@@ -53,7 +54,7 @@ ClapTrap::ClapTrap( ClapTrap const & src ) :
 	_hitPoints(src._hitPoints),
 	_energyPoints(src._energyPoints),
 		_attackDamage(src._attackDamage) {
-	std::cout << "ClapTrap \"" << _name << "\" has been cloned" << std::endl;
+	std::cout << CT_PREFIX(WHITE, _name) << "has been cloned" << std::endl;
 }
 
 
@@ -72,7 +73,7 @@ ClapTrap& ClapTrap::operator=( ClapTrap const & src ) {
 
 
 ClapTrap::~ClapTrap( void ) {
-	std::cout << "ClapTrap " << _name << " is destroyed" << std::endl;
+	std::cout << CT_PREFIX(WHITE, _name) << "is destroyed" << std::endl;
 }
 
 

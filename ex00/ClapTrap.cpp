@@ -107,14 +107,15 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 				<< RESET << std::endl;
 		return ;
 	}
-	std::cout << "[ hp:" << _hitPoints - amount << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints > amount) {
 		_hitPoints -= amount;
+		std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 		std::cout << RED << "ClapTrap " << _name << " takes " 
 				<< amount << " damage" << RESET << std::endl;
 	}
 	else {
 		_hitPoints = 0;
+		std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 		std::cout << RED << "ClapTrap " << _name << " takes " 
 				<< amount << " damage and dies from it's injuries" 
 				<< RESET << std::endl;
@@ -122,19 +123,22 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 }
 
 
-
 void	ClapTrap::beRepaired(unsigned int amount) {
-	std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0)
+	{
+		std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 		std::cout << RED << "ClapTrap " << _name << " is dead and cannot repair itself"
 				<< RESET << std::endl;
+	}
 	else if (_energyPoints > 0 && _hitPoints < 10 && amount + _hitPoints < 10) {
+		std::cout << "[ hp:" << _hitPoints + amount << " ep:" << _energyPoints << " ] ";
 		_energyPoints--;
 		_hitPoints += amount;
 		std::cout << CYAN << "ClapTrap " << _name << " repaired itself by " 
 				<< amount << " hit points" << RESET << std::endl;
 	}
 	else if (_energyPoints > 0 && _hitPoints < 10 && amount + _hitPoints >= 10) {
+		std::cout << "[ hp:" << 10 << " ep:" << _energyPoints << " ] ";
 		_energyPoints--;
 		std::cout << CYAN << "ClapTrap " << _name << " repaired itself by " 
 				<< 10 - _hitPoints << " hit points and has reach full hp"
@@ -142,11 +146,17 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		_hitPoints = 10;
 	}
 	else if (_energyPoints > 0 && _hitPoints == 10)
+	{
+		std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 		std::cout << CYAN << "ClapTrap " << _name 
 				<< " is already at full hp and don't need repair" 
 				<< RESET << std::endl;
+	}
 	else
+	{
+		std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 		std::cout << YELLOW << "ClapTrap " << _name 
 				<< " has no energy left to repair itself" 
 				<< RESET << std::endl;
+	}
 }

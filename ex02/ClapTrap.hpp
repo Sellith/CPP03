@@ -75,7 +75,7 @@ public:
 	std::string			getName ( void );
 
 
-	/* ================== Getter ================ */
+	/* ================== Setter ================ */
 
 	void				setHitPoints ( unsigned int newHp );
 	void				setEnergy ( unsigned int newEp );

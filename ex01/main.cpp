@@ -32,6 +32,7 @@ int main( void ) {
 		ScavTrap a;
 		ScavTrap b("HAAH");
 		
+		std::cout << "\n" << WHITE;
 		a.attack(b.getName());
 		b.takeDamage(a.getAttack());
 		a.attack(dummy.getName());
@@ -49,13 +50,15 @@ int main( void ) {
 		b.takeDamage(a.getAttack());
 		b.takeDamage(a.getAttack());
 		b.attack(a.getName());
+		std::cout << "\n";
 	}
-	std::cout << "\n\n";
+	std::cout << "\n";
 	{
 		ScavTrap	Marcius("Marcius");
 		ScavTrap	lucius("lucius");
 		ScavTrap	lucius2(lucius);
 
+		std::cout << "\n";
 		Marcius.beRepaired(Marcius.getAttack());
 		while (Marcius.getHitPoints() >	0 && Marcius.getEnergy() > 0) {
 			Marcius.attack(lucius.getName());
@@ -66,5 +69,6 @@ int main( void ) {
 			lucius.beRepaired(lucius.getAttack());
 		}
 		Marcius.attack(lucius2.getName());
+		std::cout << "\n";
 	}
 }

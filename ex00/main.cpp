@@ -26,25 +26,31 @@
 #include "ClapTrap.hpp"
 
 int main( void ) {
-    {
-        ClapTrap a("AHHA");
-        
-        a.attack("'a very random ClapTrap'");
-        a.takeDamage(5);
-        a.beRepaired(1);
-        a.takeDamage(10);
-        a.beRepaired(5);
-        a.attack("'another random ClapTrap'");
-        a.takeDamage(5);
-    }
-    {
-        ClapTrap Marcius("Marcius");
+	{
+		ClapTrap a("AHHA");
+		
+		std::cout << "\n";
+		a.attack("'a very random ClapTrap'");
+		a.takeDamage(5);
+		a.beRepaired(1);
+		a.takeDamage(10);
+		a.beRepaired(5);
+		a.attack("'another random ClapTrap'");
+		a.takeDamage(5);
+		std::cout << "\n";
+	}
+	std::cout << "\n";
+	{
+		ClapTrap Marcius("Marcius");
 
-        Marcius.beRepaired(5);
-        for (int i = 0; i <= 6; i++) {
-            Marcius.attack("'ahha'");
-            Marcius.takeDamage(5);
-            Marcius.beRepaired(4);
-        }
-    }
+
+		std::cout << "\n";
+		Marcius.beRepaired(5);
+		for (int i = 0; i < 6; i++) {
+			Marcius.attack("'ahha'");
+			Marcius.takeDamage(5);
+			Marcius.beRepaired(4);
+		}
+		std::cout << "\n";
+	}
 }

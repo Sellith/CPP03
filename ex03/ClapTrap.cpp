@@ -54,7 +54,7 @@ ClapTrap::ClapTrap( ClapTrap const & src ) :
 	_hitPoints(src._hitPoints),
 	_energyPoints(src._energyPoints),
 		_attackDamage(src._attackDamage) {
-	std::cout << CT_PREFIX(WHITE, _name) << "has been cloned" << std::endl;
+	std::cout << CT_PREFIX(WHITE, _name) << "has been cloned" << RESET << std::endl;
 }
 
 
@@ -62,7 +62,7 @@ ClapTrap& ClapTrap::operator=( ClapTrap const & src ) {
 	if (&src != this)
 	{
 		if ( DEBUG )
-			std::cout << "Cloning..." << std::endl;
+			std::cout << WHITE << "Cloning..." << RESET << std::endl;
 		_name = src._name;
 		_hitPoints = src._hitPoints;
 		_energyPoints = src._energyPoints;
@@ -100,12 +100,16 @@ void ClapTrap::attack( const std::string& target ) {
 
 
 void    ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << "[ hp:" << _hitPoints - amount << " ep:" << _energyPoints << " ] ";
 	if (_hitPoints == 0) 
+	{
+		std::cout << "[ hp:" << _hitPoints << " ep:" << _energyPoints << " ] ";
 		std::cout << RED << "ClapTrap " << _name 
 				<< "'s hp is already 0, please stop beating it" 
 				<< RESET << std::endl;
-	else if (_hitPoints > amount) {
+		return ;
+	}
+	std::cout << "[ hp:" << _hitPoints - amount << " ep:" << _energyPoints << " ] ";
+	if (_hitPoints > amount) {
 		_hitPoints -= amount;
 		std::cout << RED << "ClapTrap " << _name << " takes " 
 				<< amount << " damage" << RESET << std::endl;

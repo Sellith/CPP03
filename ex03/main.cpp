@@ -32,13 +32,20 @@ int main( void ) {
 	DiamondTrap b("Romie");
 	DiamondTrap c(b);
 	
+	std::cout << "\n" << WHITE;
+
 	a.whoami();
 	b.whoami();
 	c.whoami();
 
-	std::cout << "hp is " << c.getHitPoints() << " ep is " << c.getEnergy() << " ap is " << c.getAttack() << std::endl;
+	std::cout << "\n";
+
+	std::cout << GREEN << "hp is " << c.getHitPoints() << " ep is " << c.getEnergy() << " ap is " << c.getAttack() << RESET << std::endl;
+
+	std::cout << "\n";
 
 	a.attack(b.getName());
 	b.takeDamage(a.getAttack());
+	std::cout << "\n";
 
 }

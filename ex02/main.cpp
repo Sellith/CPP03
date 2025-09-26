@@ -33,13 +33,16 @@ int main( void ) {
 	FragTrap	john("john");
 	FragTrap	cp(john);
 
+	std::cout << "\n";
 	a.highFivesGuys();
 	john.highFivesGuys();
 	cp.highFivesGuys();
 
+	std::cout << "\n";
 	a.attack(john.getName());
 	john.takeDamage(a.getAttack());
 	cp.attack(john.getName());
 	john.takeDamage(cp.getAttack());
 	
+	std::cout << "\n";
 }

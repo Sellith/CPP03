@@ -43,6 +43,10 @@ public:
 	ScavTrap ( ScavTrap const & cp );
 	~ScavTrap ( void );
 
+/* =================== Operator ================== */
+
+	ScavTrap& operator=( ScavTrap const & src );
+
 /* =================== ScavTrap ================== */
 
 	void	attack ( const std::string & target );

@@ -33,10 +33,18 @@ class FragTrap : virtual public ClapTrap {
 
 public:
 
+/* ================= Constructor ================= */
+
 	FragTrap ( void );
 	FragTrap ( std::string name );
 	FragTrap ( FragTrap const & cp );
 	~FragTrap ( void );
+
+/* ================== Operator ================== */
+
+	FragTrap& operator=( FragTrap const & src );
+
+/* =================== FragTrap ================== */
 
 	void	highFivesGuys ( void );
 

@@ -34,10 +34,18 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 
 public:
 
-	DiamondTrap ( void );
-	DiamondTrap ( std::string name );
-	DiamondTrap ( DiamondTrap const & src );
-	~DiamondTrap ( void );
+/* ================= Constructor ================ */
+
+	DiamondTrap		( void );
+	DiamondTrap		( std::string name );
+	DiamondTrap		( DiamondTrap const & src );
+	~DiamondTrap	( void );
+
+/* ================== Operator ================== */
+
+	DiamondTrap& operator= ( DiamondTrap const & src );
+
+/* =================== Diamond =================== */
 
 	void	whoami ( void );
 	void	attack ( const std::string & target );

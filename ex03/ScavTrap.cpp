@@ -70,6 +70,20 @@ ScavTrap::~ScavTrap( void ) {
 }
 
 
+ScavTrap& ScavTrap::operator=( ScavTrap const & src ) {
+	if (&src != this)
+	{
+		if ( DEBUG )
+			std::cout << WHITE << "Cloning..." << RESET << std::endl;
+		_name = src._name;
+		_hitPoints = src._hitPoints;
+		_energyPoints = src._energyPoints;
+		_attackDamage = src._attackDamage;
+	}
+	return ( *this );
+}
+
+
 /* =========================== needed functions ============================ */
 
 

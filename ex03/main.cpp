@@ -40,7 +40,9 @@ int main( void ) {
 
 	std::cout << "\n";
 
-	std::cout << GREEN << "hp is " << c.getHitPoints() << " ep is " << c.getEnergy() << " ap is " << c.getAttack() << RESET << std::endl;
+	std::cout << GREEN << "DiamondTrap's defauls hp is : " << c.getHitPoints()
+					<< "\nDiamondTrap's defauls ep is : " << c.getEnergy() 
+					<< "\nDiamondTrap's defauls ap is : " << c.getAttack() << RESET << std::endl;
 
 	std::cout << "\n";
 

@@ -43,15 +43,18 @@ FragTrap::FragTrap( void ) :
 	_hitPoints = HP_MAX;
 	_energyPoints = 100;
 	_attackDamage = 30;
+	_buffHitPoints = _hitPoints;
+	_buffEnergyPoints = _energyPoints;
+	_buffAttackDamage = _attackDamage;
 	std::cout << SCAV_PREFIX(WHITE, _name) << READY << RESET << std::endl;
 }
 
 
 FragTrap::FragTrap( std::string name ) : 
 	ClapTrap( name ) {
-	_hitPoints = HP_MAX;
-	_energyPoints = 100;
-	_attackDamage = 30;
+	_buffHitPoints = HP_MAX;
+	_buffEnergyPoints = 100;
+	_buffAttackDamage = 30;
 	std::cout << "\e[1;97mCustom " << SCAV_PREFIX(WHITE, _name) << READY << RESET << std::endl;
 }
 
@@ -73,9 +76,9 @@ FragTrap& FragTrap::operator=( FragTrap const & src ) {
 		if ( DEBUG )
 			std::cout << WHITE << "Cloning..." << RESET << std::endl;
 		_name = src._name;
-		_hitPoints = src._hitPoints;
-		_energyPoints = src._energyPoints;
-		_attackDamage = src._attackDamage;
+		_buffHitPoints = src._buffHitPoints;
+		_buffEnergyPoints = src._buffEnergyPoints;
+		_buffAttackDamage = src._buffAttackDamage;
 	}
 	return ( *this );
 }

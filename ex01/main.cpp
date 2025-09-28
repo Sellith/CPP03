@@ -38,6 +38,7 @@ int main( void ) {
 		a.attack(dummy.getName());
 		dummy.takeDamage(a.getAttack());
 		b.guardGate();
+		b.guardGate();
 		a.attack(b.getName());
 		b.takeDamage(a.getAttack());
 		b.takeDamage(a.getAttack());
@@ -50,6 +51,8 @@ int main( void ) {
 		b.takeDamage(a.getAttack());
 		b.takeDamage(a.getAttack());
 		b.attack(a.getName());
+		b.guardGate();
+
 		std::cout << "\n";
 	}
 	std::cout << "\n";

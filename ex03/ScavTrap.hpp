@@ -50,7 +50,15 @@ public:
 /* =================== ScavTrap ================== */
 
 	void	attack ( const std::string & target );
+	void    takeDamage ( unsigned int amount );
 	void	guardGate ( void );
+
+protected:
+
+	bool			_guardstatus;
+	unsigned int	_buffHitPoints;
+	unsigned int	_buffEnergyPoints;
+	unsigned int	_buffAttackDamage;
 
 } ;
 

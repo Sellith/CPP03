@@ -42,7 +42,8 @@ int main( void ) {
 	a.attack(john.getName());
 	john.takeDamage(a.getAttack());
 	cp.attack(john.getName());
-	john.takeDamage(cp.getAttack());
+	john.takeDamage(1000);
+	john.highFivesGuys();
 	
 	std::cout << "\n";
 }

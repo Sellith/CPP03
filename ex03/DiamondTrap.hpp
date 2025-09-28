@@ -48,7 +48,7 @@ public:
 /* =================== Diamond =================== */
 
 	void	whoami ( void );
-	void	attack ( const std::string & target );
+	using ScavTrap::attack;
 
 private:
 

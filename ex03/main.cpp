@@ -31,7 +31,9 @@ int main( void ) {
 	DiamondTrap a;
 	DiamondTrap b("Romie");
 	DiamondTrap c(b);
-	
+	ScavTrap	d;
+	FragTrap	e;
+
 	std::cout << "\n" << WHITE;
 
 	a.whoami();
@@ -42,7 +44,17 @@ int main( void ) {
 
 	std::cout << GREEN << "DiamondTrap's defauls hp is : " << c.getHitPoints()
 					<< "\nDiamondTrap's defauls ep is : " << c.getEnergy() 
-					<< "\nDiamondTrap's defauls ap is : " << c.getAttack() << RESET << std::endl;
+					<< "\nDiamondTrap's defauls ap is : " << c.getAttack() << "\n" << RESET << std::endl;
+
+
+	std::cout << GREEN << "ScavTrap's defauls hp is : " << d.getHitPoints()
+					<< "\nScavTrap's defauls ep is : " << d.getEnergy() 
+					<< "\nScavTrap's defauls ap is : " << d.getAttack() << RESET << "\n" << std::endl;
+
+	
+	std::cout << GREEN << "FragTrap's defauls hp is : " << e.getHitPoints()
+					<< "\nFragTrap's defauls ep is : " << e.getEnergy() 
+					<< "\nFragTrap's defauls ap is : " << e.getAttack() << RESET << std::endl;
 
 	std::cout << "\n";
 

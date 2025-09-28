@@ -50,8 +50,12 @@ public:
 /* =================== ScavTrap ================== */
 
 	void	attack ( const std::string & target );
+	void    takeDamage ( unsigned int amount );
 	void	guardGate ( void );
 
+private:
+
+	bool	_guardstatus;
 } ;
 
 #endif

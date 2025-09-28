@@ -30,6 +30,7 @@
 #define CLONED		"has been cloned and is ready to attack"
 #define FINISH		"has successfully destroyed the target"
 #define COOL		"request to do a high five"
+#define NOTCOOL		"can't request a high five cause isdead"
 
 
 #define SCAV_PREFIX(color, name)	color << "FragTrap \"" << name << "\" "
@@ -88,6 +89,9 @@ void	FragTrap::highFivesGuys( void ) {
 
 	std::cout << STATUS(getHitPoints(), getEnergy());
 
-	std::cout << SCAV_PREFIX(PURPLE, _name) << COOL << RESET << std::endl;
+	if (_hitPoints == 0)
+		std::cout << SCAV_PREFIX(YELLOW, _name) << NOTCOOL << RESET << std::endl;
+	else
+		std::cout << SCAV_PREFIX(CYAN, _name) << COOL << RESET << std::endl;
 }
 

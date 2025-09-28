@@ -48,6 +48,12 @@ public:
 
 	void	highFivesGuys ( void );
 
+protected:
+
+	unsigned int	_buffHitPoints;
+	unsigned int	_buffEnergyPoints;
+	unsigned int	_buffAttackDamage;
+
 };
 
 #endif

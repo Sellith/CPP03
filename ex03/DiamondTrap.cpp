@@ -38,9 +38,9 @@
 
 DiamondTrap::DiamondTrap( void ): ClapTrap( "Random_clap_name" ) {
 	_name = "Random";
-	_hitPoints = HP_MAX;
-	_energyPoints = 50;
-	_attackDamage = 30;
+	_hitPoints = FragTrap::_buffHitPoints;
+	_energyPoints = ScavTrap::_buffEnergyPoints;
+	_attackDamage = FragTrap::_buffAttackDamage;
 	std::cout << DT_PREFIX(WHITE, _name) << READY << RESET << std::endl;
 }
 
@@ -86,10 +86,5 @@ void	DiamondTrap::whoami( void ) {
 
 	std::cout << CYAN << "my Diamond name is " << _name << " and my ClapTrap name is " 
 		<< ClapTrap::_name << RESET << std::endl;
-}
-
-
-void	DiamondTrap::attack( const std::string & target ) {
-	ScavTrap::attack( target );
 }
 

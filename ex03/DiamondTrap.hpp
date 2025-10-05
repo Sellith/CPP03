@@ -48,7 +48,7 @@ public:
 /* =================== Diamond =================== */
 
 	void	whoami ( void );
-	using ScavTrap::attack;
+	using	ScavTrap::attack;
 
 private:
 

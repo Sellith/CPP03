@@ -42,19 +42,19 @@ int main( void ) {
 
 	std::cout << "\n";
 
-	std::cout << GREEN << "DiamondTrap's defauls hp is : " << c.getHitPoints()
-					<< "\nDiamondTrap's defauls ep is : " << c.getEnergy() 
-					<< "\nDiamondTrap's defauls ap is : " << c.getAttack() << "\n" << RESET << std::endl;
+	std::cout << GREEN << "DiamondTrap's defaults hp is : " << c.getHitPoints()
+					<< "\nDiamondTrap's defaults ep is : " << c.getEnergy() 
+					<< "\nDiamondTrap's defaults ap is : " << c.getAttack() << "\n" << RESET << std::endl;
 
 
-	std::cout << GREEN << "ScavTrap's defauls hp is : " << d.getHitPoints()
-					<< "\nScavTrap's defauls ep is : " << d.getEnergy() 
-					<< "\nScavTrap's defauls ap is : " << d.getAttack() << RESET << "\n" << std::endl;
+	std::cout << GREEN << "ScavTrap's defaults hp is : " << d.getHitPoints()
+					<< "\nScavTrap's defaults ep is : " << d.getEnergy() 
+					<< "\nScavTrap's defaults ap is : " << d.getAttack() << RESET << "\n" << std::endl;
 
 	
-	std::cout << GREEN << "FragTrap's defauls hp is : " << e.getHitPoints()
-					<< "\nFragTrap's defauls ep is : " << e.getEnergy() 
-					<< "\nFragTrap's defauls ap is : " << e.getAttack() << RESET << std::endl;
+	std::cout << GREEN << "FragTrap's defaults hp is : " << e.getHitPoints()
+					<< "\nFragTrap's defaults ep is : " << e.getEnergy() 
+					<< "\nFragTrap's defaults ap is : " << e.getAttack() << RESET << std::endl;
 
 	std::cout << "\n";
 
